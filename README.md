@@ -8,9 +8,15 @@ Frontend: Asp Net Core Razor Page
 Database: PostgresSql
 
 Design pattern:
+
 Mediator
+
 Unit Of Work
+
 Repository (Generic and Non)
+
 Option
+
 Factory (Abstract and Non)
+
 CQRS
