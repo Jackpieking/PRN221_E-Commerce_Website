@@ -1,6 +1,6 @@
-using MockProject.Data.Repositories.Interfaces.Base;
-using MockProject.Models;
+using PRN221_E_Commerce_Website.Data.Entities;
+using PRN221_E_Commerce_Website.Data.Repositories.Interfaces.Base;
 
-namespace MockProject.Data.Repositories.Interfaces;
+namespace PRN221_E_Commerce_Website.Data.Repositories.Interfaces;
 
 public interface IOrderDetailRepository : IBaseRepository<OrderDetail> { }

@@ -1,11 +1,10 @@
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MockProject.Pages.Auth
+namespace PRN221_E_Commerce_Website.Pages.Auth;
+
+public sealed class ResetPasswordModel : PageModel
 {
-    public class ResetPasswordModel : PageModel
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
 }

@@ -1,19 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MockProject.Pages
+namespace PRN221_E_Commerce_Website.Pages;
+
+public sealed class PrivacyModel : PageModel
 {
-    public class PrivacyModel : PageModel
+    public void OnGet()
     {
-        private readonly ILogger<PrivacyModel> _logger;
-
-        public PrivacyModel(ILogger<PrivacyModel> logger)
-        {
-            _logger = logger;
-        }
-
-        public void OnGet()
-        {
-        }
     }
-
 }

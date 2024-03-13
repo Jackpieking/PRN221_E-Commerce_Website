@@ -1,41 +1,61 @@
+using Microsoft.AspNetCore.Builder;
 using Microsoft.EntityFrameworkCore;
-using MockProject.Models;
+using Microsoft.Extensions.Configuration;
+using Microsoft.Extensions.DependencyInjection;
+using Microsoft.Extensions.Hosting;
+using Microsoft.Extensions.Logging;
+using PRN221_E_Commerce_Website.Data;
+using PRN221_E_Commerce_Website.Options;
+using System;
+using System.Text;
 
-var builder = WebApplication.CreateBuilder(args);
+Console.OutputEncoding = Encoding.UTF8;
+
+var builder = WebApplication.CreateBuilder(args: args);
 
 // Add services to the container.
+builder.Services.AddLogging(configure: config =>
+{
+    config.ClearProviders();
+    config.AddConsole();
+});
+
 builder.Services.AddRazorPages();
 
-builder.Services.AddDbContext<AppDbContext>(
-    (service) =>
-    {
-        service.UseNpgsql(builder.Configuration.GetConnectionString("Database"));
-    }
-);
+builder.Services.AddDbContext<AppDbContext>(service =>
+{
+    var dbOption = builder.Configuration
+        .GetRequiredSection("Database")
+        .GetRequiredSection("PRN221_MOCK")
+        .Get<DatabaseOption>();
+
+    service.UseNpgsql(
+        dbOption.ConnectionString,
+        option =>
+        {
+            option
+                .EnableRetryOnFailure(dbOption.EnableRetryOnFailure)
+                .CommandTimeout(dbOption.CommandTimeOut);
+        })
+    .EnableSensitiveDataLogging(dbOption.EnableSensitiveDataLogging)
+    .EnableDetailedErrors(dbOption.EnableDetailedErrors)
+    .EnableServiceProviderCaching(dbOption.EnableServiceProviderCaching)
+    .EnableThreadSafetyChecks(dbOption.EnableThreadSafetyChecks);
+});
 
 var app = builder.Build();
-
-// await using (var scope = app.Services.CreateAsyncScope())
-// {
-//     var context = scope.ServiceProvider.GetRequiredService<AppDbContext>();
-
-//     await context.Database.MigrateAsync();
-// }
 
 // Configure the HTTP request pipeline.
 if (!app.Environment.IsDevelopment())
 {
-    app.UseExceptionHandler("/Error");
-    // The default HSTS value is 30 days. You may want to change this for production scenarios, see https://aka.ms/aspnetcore-hsts.
+    app.UseExceptionHandler(errorHandlingPath: "/Error");
     app.UseHsts();
 }
 
-app.UseHttpsRedirection();
-app.UseStaticFiles();
-
-app.UseRouting();
-
-app.UseAuthorization();
+app
+    .UseHttpsRedirection()
+    .UseStaticFiles()
+    .UseRouting();
 
 app.MapRazorPages();
 

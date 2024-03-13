@@ -1,5 +1,5 @@
 ﻿@page
-@model MockProject.Pages.Admin.Rooms.IndexModel
+@model PRN221_E_Commerce_Website.Pages.Admin.Rooms.IndexModel
 
 @{
     ViewData["Title"] = "Index";
@@ -27,7 +27,7 @@
                 @Html.DisplayNameFor(model => model.Room[0].RoomImage)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.Room[0].isAvailable)
+                @Html.DisplayNameFor(model => model.Room[0].IsAvailable)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.Room[0].Category)
@@ -51,7 +51,7 @@
                 @Html.DisplayFor(modelItem => item.RoomImage)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.isAvailable)
+                @Html.DisplayFor(modelItem => item.IsAvailable)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.Category.ID)

@@ -1,7 +1,6 @@
-using System;
 using System.Collections.Generic;
 
-namespace MockProject.Models;
+namespace PRN221_E_Commerce_Website.Data.Entities;
 
 public sealed class Category
 {

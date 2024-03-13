@@ -1,24 +1,27 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using MockProject.Models;
+using PRN221_E_Commerce_Website.Data;
+using PRN221_E_Commerce_Website.Data.Entities;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace MockProject.Pages.Admin.Rooms
+namespace PRN221_E_Commerce_Website.Pages.Admin.Rooms;
+
+public sealed class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    private readonly AppDbContext _context;
+
+    public IndexModel(AppDbContext context)
     {
-        private readonly AppDbContext _context;
+        _context = context;
+    }
 
-        public IndexModel(AppDbContext context)
-        {
-            _context = context;
-        }
+    public List<Room> Room { get; set; }
 
-        public IList<Room> Room { get;set; }
-
-        public async Task OnGetAsync()
-        {
-            Room = await _context.Rooms
-                .Include(r => r.Category).ToListAsync();
-        }
+    public async Task OnGetAsync()
+    {
+        Room = await _context.Rooms
+            .Include(r => r.Category)
+            .ToListAsync();
     }
 }

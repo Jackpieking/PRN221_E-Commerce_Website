@@ -1,74 +1,70 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.RazorPages;
+using Microsoft.EntityFrameworkCore;
+using PRN221_E_Commerce_Website.Data;
 using System.Linq;
 using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
-using Microsoft.AspNetCore.Mvc.RazorPages;
-using Microsoft.AspNetCore.Mvc.Rendering;
-using Microsoft.EntityFrameworkCore;
-using MockProject.Models;
 
-namespace MockProject.Pages.Admin.Category
+namespace PRN221_E_Commerce_Website.Pages.Admin.Category;
+
+public sealed class EditModel : PageModel
 {
-    public class EditModel : PageModel
-    {
-        private readonly MockProject.Models.AppDbContext _context;
+    private readonly AppDbContext _context;
 
-        public EditModel(MockProject.Models.AppDbContext context)
+    public EditModel(AppDbContext context)
+    {
+        _context = context;
+    }
+
+    [BindProperty]
+    public Data.Entities.Category Category { get; set; }
+
+    public async Task<IActionResult> OnGetAsync(int? id)
+    {
+        if (id == null)
         {
-            _context = context;
+            return NotFound();
         }
 
-        [BindProperty]
-        public Models.Category Category { get; set; }
+        Category = await _context.Categories.FirstOrDefaultAsync(m => m.ID == id);
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        if (Category == null)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
+            return NotFound();
+        }
+        return Page();
+    }
 
-            Category = await _context.Categories.FirstOrDefaultAsync(m => m.ID == id);
-
-            if (Category == null)
-            {
-                return NotFound();
-            }
+    public async Task<IActionResult> OnPostAsync()
+    {
+        if (!ModelState.IsValid)
+        {
             return Page();
         }
 
-        public async Task<IActionResult> OnPostAsync()
+        _context.Attach(Category).State = EntityState.Modified;
+
+        try
         {
-            if (!ModelState.IsValid)
+            await _context.SaveChangesAsync();
+        }
+        catch (DbUpdateConcurrencyException)
+        {
+            if (!CategoryExists(Category.ID))
             {
-                return Page();
+                return NotFound();
             }
-
-            _context.Attach(Category).State = EntityState.Modified;
-
-            try
+            else
             {
-                await _context.SaveChangesAsync();
+                throw;
             }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!CategoryExists(Category.ID))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return RedirectToPage("./Index");
         }
 
-        private bool CategoryExists(int id)
-        {
-            return _context.Categories.Any(e => e.ID == id);
-        }
+        return RedirectToPage("./Index");
+    }
+
+    private bool CategoryExists(int id)
+    {
+        return _context.Categories.Any(e => e.ID == id);
     }
 }

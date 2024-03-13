@@ -1,40 +1,38 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
-using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
-using MockProject.Models;
+using PRN221_E_Commerce_Website.Data;
+using PRN221_E_Commerce_Website.Data.Entities;
+using System.Threading.Tasks;
 
-namespace MockProject.Pages.Admin.Rooms
+namespace PRN221_E_Commerce_Website.Pages.Admin.Rooms;
+
+public sealed class DetailsModel : PageModel
 {
-    public class DetailsModel : PageModel
+    private readonly AppDbContext _context;
+
+    public DetailsModel(AppDbContext context)
     {
-        private readonly MockProject.Models.AppDbContext _context;
+        _context = context;
+    }
 
-        public DetailsModel(MockProject.Models.AppDbContext context)
+    public Room Room { get; set; }
+
+    public async Task<IActionResult> OnGetAsync(int? id)
+    {
+        if (id == null)
         {
-            _context = context;
+            return NotFound();
         }
 
-        public Room Room { get; set; }
+        Room = await _context.Rooms
+            .Include(r => r.Category)
+            .FirstOrDefaultAsync(m => m.Id == id);
 
-        public async Task<IActionResult> OnGetAsync(int? id)
+        if (Room == null)
         {
-            if (id == null)
-            {
-                return NotFound();
-            }
-
-            Room = await _context.Rooms
-                .Include(r => r.Category).FirstOrDefaultAsync(m => m.Id == id);
-
-            if (Room == null)
-            {
-                return NotFound();
-            }
-            return Page();
+            return NotFound();
         }
+        return Page();
     }
 }

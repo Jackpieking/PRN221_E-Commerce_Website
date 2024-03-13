@@ -1,22 +1,24 @@
 ﻿using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.EntityFrameworkCore;
+using PRN221_E_Commerce_Website.Data;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
-namespace MockProject.Pages.Admin.Category
+namespace PRN221_E_Commerce_Website.Pages.Admin.Category;
+
+public sealed class IndexModel : PageModel
 {
-    public class IndexModel : PageModel
+    private readonly AppDbContext _context;
+
+    public IndexModel(AppDbContext context)
     {
-        private readonly Models.AppDbContext _context;
+        _context = context;
+    }
 
-        public IndexModel(Models.AppDbContext context)
-        {
-            _context = context;
-        }
+    public List<Data.Entities.Category> Category { get; set; }
 
-        public IList<Models.Category> Category { get;set; }
-
-        public async Task OnGetAsync()
-        {
-            Category = await _context.Categories.ToListAsync();
-        }
+    public async Task OnGetAsync()
+    {
+        Category = await _context.Categories.ToListAsync();
     }
 }

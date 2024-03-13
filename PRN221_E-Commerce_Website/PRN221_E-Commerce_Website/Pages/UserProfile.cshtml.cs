@@ -1,12 +1,10 @@
-using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 
-namespace MockProject.Pages
+namespace PRN221_E_Commerce_Website.Pages;
+
+public sealed class UserInforModel : PageModel
 {
-    public class UserInforModel : PageModel
+    public void OnGet()
     {
-        public void OnGet()
-        {
-        }
     }
 }
