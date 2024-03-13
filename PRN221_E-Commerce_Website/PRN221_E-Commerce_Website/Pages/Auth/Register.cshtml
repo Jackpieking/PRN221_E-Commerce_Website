@@ -1,0 +1,70 @@
+﻿@page
+@model MockProject.Pages.Auth.RegisterModel
+@{
+    Layout = "Shared/_Layout";
+}
+<!--===== INNERPAGE-WRAPPER ====-->
+<section class="innerpage-wrapper">
+    <div id="registration" class="innerpage-section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="flex-content">
+                        <div class="custom-form custom-form-fields">
+                            <h3>Registration</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            @using (Html.BeginForm("CheckInputUserSignup", "Signup", FormMethod.Post))
+                            {
+                                @ViewBag.fail
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Name, new { @class = "sr-only", @for = "lastName" }) *
+                                    @Html.TextBoxFor(m => m.Name, new { @class = "form-control account", id = "name", name = "name", placeholder = "Name", autofocus = "", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
+
+                                </div>
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Account, new { @class = "sr-only", @for = "inputAccount" })
+                                    @Html.TextBoxFor(m => m.Account, new { @class = "form-control account", id = "inputAccount", name = "account", placeholder = "User account", autofocus = "", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })
+                                    <span><i class="fa fa-user"></i></span>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Email, new { @class = "sr-only", @for = "inputEmail" })
+                                    @Html.TextBoxFor(m => m.Email, new { @class = "form-control email", id = "inputEmail", name = "email", placeholder = "Email address", autofocus = "", type = "email", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
+                                    <span><i class="fa fa-envelope"></i></span>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, new { @class = "sr-only", @for = "inputPassword" })
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg password", id = "inputPassword", name = "Password", placeholder = "Password", type = "password", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Password)
+                                    <span><i class="fa fa-lock"></i></span>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.ConfirmPassword, new { @class = "sr-only", @for = "inputPassword" })
+                                    @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control form-control-lg password_confirmation", id = "inputPassword", name = "ConfirmPassword", placeholder = "Confirm Password", type = "password", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.ConfirmPassword)
+                                    <span><i class="fa fa-lock"></i></span>
+                                </div>
+
+                                <button class="btn btn-orange btn-block" type="submit">Register</button>
+
+                            }
+
+
+                        </div><!-- end custom-form -->
+
+                        <div class="flex-content-img custom-form-img">
+                            <img src="~/img/image--ks2.png" class="img-responsive" alt="registration-img" />
+                        </div><!-- end custom-form-img -->
+                    </div><!-- end form-content -->
+
+                </div><!-- end columns -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end registration -->
+</section><!-- end innerpage-wrapper -->

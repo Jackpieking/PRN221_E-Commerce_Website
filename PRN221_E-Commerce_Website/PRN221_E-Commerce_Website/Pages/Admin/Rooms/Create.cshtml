@@ -1,0 +1,59 @@
+﻿@page
+@model MockProject.Pages.Admin.Rooms.CreateModel
+
+@{
+    ViewData["Title"] = "Create";
+    Layout = "~/Pages/Admin/Shared/_Layout.cshtml";
+}
+
+<h2>Create</h2>
+
+<h4>Room</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label asp-for="Room.CategoryId" class="control-label"></label>
+                <select asp-for="Room.CategoryId" class ="form-control" asp-items="ViewBag.CategoryId"></select>
+            </div>
+            <div class="form-group">
+                <label asp-for="Room.Name" class="control-label"></label>
+                <input asp-for="Room.Name" class="form-control" />
+                <span asp-validation-for="Room.Name" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Room.Price" class="control-label"></label>
+                <input asp-for="Room.Price" class="form-control" />
+                <span asp-validation-for="Room.Price" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Room.BedQuantity" class="control-label"></label>
+                <input asp-for="Room.BedQuantity" class="form-control" />
+                <span asp-validation-for="Room.BedQuantity" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Room.RoomImage" class="control-label"></label>
+                <input asp-for="Room.RoomImage" class="form-control" />
+                <span asp-validation-for="Room.RoomImage" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label asp-for="Room.isAvailable" class="control-label"></label>
+                <input asp-for="Room.isAvailable" class="form-control" />
+                <span asp-validation-for="Room.isAvailable" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-page="Index">Back to List</a>
+</div>
+
+@section Scripts {
+    @{await Html.RenderPartialAsync("_ValidationScriptsPartial");}
+}

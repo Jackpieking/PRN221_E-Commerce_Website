@@ -1,0 +1,258 @@
+﻿@page
+@model MockProject.Pages.UserInforModel
+@{
+}
+<!--===== INNERPAGE-WRAPPER ====-->
+<section class="innerpage-wrapper">
+    <div id="dashboard" class="innerpage-section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+
+                    <div class="dashboard-wrapper">
+                        <div class="row">
+
+                            @*<div class="col-xs-12 col-sm-2 col-md-2 dashboard-nav">
+                            <ul class="nav nav-tabs nav-stacked text-center">
+                            <li class="active"><a href="#"><span><i class="fa fa-user"></i></span>Profile</a></li>
+                            <li><a href="@Url.ActionLink("ViewOrders","UserProfile", new {id = Accessors.HttpContext.Session.GetString("ID")})"><span><i class="fa fa-briefcase"></i></span>Booking</a></li>
+                            </ul>
+                            </div><!-- end columns -->
+                            *@
+                            <div class="col-xs-12 col-sm-10 col-md-10 dashboard-content user-profile">
+                                <h2 class="dash-content-title">My Profile</h2>
+                                <div class="panel panel-default">
+                                    <div class="panel-heading"><h4>Profile Details</h4></div>
+                                    <div class="panel-body">
+                                        <div class="row">
+                                            <div class="col-sm-5 col-md-4 user-img">
+                                                <img src="~/img/useravt.jpg" class="img-responsive" alt="user-img" />
+                                            </div><!-- end columns -->
+
+                                            <div class="col-sm-7 col-md-8  user-detail">
+                                                <ul class="list-unstyled">
+                                                    @* <li><span>Name:</span>@Model.Name</li>
+                                                    <li><span>Date of Birth:</span>@Model.Birthday</li>
+                                                    <li><span>Email:</span>@Model.Email</li>
+                                                    <li><span>Phone:</span>@Model.Phone</li>
+                                                    <li><span>Country:</span>@Model.Nation</li>
+                                                    <li><span>Gender:</span>@Model.Gender</li>
+                                                    <li><span>Identity Card:</span>@Model.Identitycard</li> *@
+                                                </ul>
+                                                <button class="btn" data-toggle="modal" data-target="#edit-profile">Edit Profile</button>
+                                                <button class="btn" data-toggle="modal" data-target="#edit-password">Change Password</button>
+                                            </div><!-- end columns -->
+
+                                            <div class="col-sm-12 user-desc">
+                                                <h4>About You</h4>
+                                                <p>Vestibulum tristique, justo eu sollicitudin sagittis, metus dolor eleifend urna, quis scelerisque purus quam nec ligula. Suspendisse iaculis odio odio, ac vehicula nisi faucibus eu. Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse posuere semper sem ac aliquet. Duis vel bibendum tellus, eu hendrerit sapien. Proin fringilla, enim vel lobortis viverra, augue orci fringilla diam, sed cursus elit mi vel lacus. Nulla facilisi. Fusce sagittis, magna non vehicula gravida, ante arcu pulvinar arcu, aliquet luctus arcu purus sit amet sem. Mauris blandit odio sed nisi porttitor egestas. Mauris in quam interdum purus vehicula rutrum quis in sem. Integer interdum lectus at nulla dictum luctus. Sed risus felis, posuere id condimentum non, egestas pulvinar enim. Praesent pretium risus eget nisi ullamcorper fermentum. Duis lacinia nisi ac rhoncus vestibulum.</p>
+
+                                            </div><!-- end columns -->
+                                        </div><!-- end row -->
+
+                                    </div><!-- end panel-body -->
+                                </div><!-- end panel-detault -->
+                            </div>
+
+                            <!-- end columns -->
+
+                        </div><!-- end row -->
+                    </div><!-- end dashboard-wrapper -->
+                </div><!-- end columns -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end dashboard -->
+</section><!-- end innerpage-wrapper -->
+<!--========================= NEWSLETTER-1 ==========================-->
+<section id="newsletter-1" class="section-padding back-size newsletter">
+    <div class="container">
+        <div class="row">
+            <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12 text-center">
+                <h2>Subscribe Our Newsletter</h2>
+                <p>Subscibe to receive our interesting updates</p>
+                <form>
+                    <div class="form-group">
+                        <div class="input-group">
+                            <input type="email" class="form-control input-lg" placeholder="Enter your email address" required />
+                            <span class="input-group-btn"><button class="btn btn-lg"><i class="fa fa-envelope"></i></button></span>
+                        </div>
+                    </div>
+                </form>
+            </div><!-- end columns -->
+        </div><!-- end row -->
+    </div><!-- end container -->
+</section><!-- end newsletter-1 -->
+<!--======================= FOOTER =======================-->
+<section id="footer" class="ftr-heading-o ftr-heading-mgn-1">
+
+    <div id="footer-top" class="banner-padding ftr-top-black ftr-text-white">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 footer-widget ftr-contact">
+                    <h3 class="footer-heading">CONTACT US</h3>
+                    <ul class="list-unstyled">
+                        <li><span><i class="fa fa-map-marker"></i></span>29 Land St, Lorem City, CA</li>
+                        <li><span><i class="fa fa-phone"></i></span>+00 123 4567</li>
+                        <li><span><i class="fa fa-envelope"></i></span>info@starhotel.com</li>
+                    </ul>
+                </div><!-- end columns -->
+
+                <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 footer-widget ftr-links">
+                    <h3 class="footer-heading">COMPANY</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Home</a></li>
+                        <li><a href="#">Flight</a></li>
+                        <li><a href="#">Hotel</a></li>
+                        <li><a href="#">Tours</a></li>
+                        <li><a href="#">Cruise</a></li>
+                        <li><a href="#">Cars</a></li>
+                    </ul>
+                </div><!-- end columns -->
+
+                <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 footer-widget ftr-links ftr-pad-left">
+                    <h3 class="footer-heading">RESOURCES</h3>
+                    <ul class="list-unstyled">
+                        <li><a href="#">Blogs</a></li>
+                        <li><a href="#">Contact Us</a></li>
+                        <li><a href="#">Login</a></li>
+                        <li><a href="#">Register</a></li>
+                        <li><a href="#">Site Map</a></li>
+                    </ul>
+                </div><!-- end columns -->
+
+                <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 footer-widget ftr-about">
+                    <h3 class="footer-heading">ABOUT US</h3>
+                    <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit.</p>
+                    <ul class="social-links list-inline list-unstyled">
+                        <li><a href="#"><span><i class="fa fa-facebook"></i></span></a></li>
+                        <li><a href="#"><span><i class="fa fa-twitter"></i></span></a></li>
+                        <li><a href="#"><span><i class="fa fa-google-plus"></i></span></a></li>
+                        <li><a href="#"><span><i class="fa fa-pinterest-p"></i></span></a></li>
+                        <li><a href="#"><span><i class="fa fa-instagram"></i></span></a></li>
+                        <li><a href="#"><span><i class="fa fa-linkedin"></i></span></a></li>
+                        <li><a href="#"><span><i class="fa fa-youtube-play"></i></span></a></li>
+                    </ul>
+                </div><!-- end columns -->
+
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end footer-top -->
+
+    <div id="footer-bottom" class="ftr-bot-black">
+        <div class="container">
+            <div class="row">
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="copyright">
+                    <p>© 2017 <a href="#">StarTravel</a>. All rights reserved.</p>
+                </div><!-- end columns -->
+
+                <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6" id="terms">
+                    <ul class="list-unstyled list-inline">
+                        <li><a href="#">Terms & Condition</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                    </ul>
+                </div><!-- end columns -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end footer-bottom -->
+
+</section><!-- end footer -->
+
+
+<div id="edit-profile" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Edit Profile</h3>
+            </div><!-- end modal-header -->
+
+            <div class="modal-body">
+                @using (Html.BeginForm("EditUserProfile", "UserProfile", new { userID = 1}, FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>Your Name</label>
+                        <input type="text" class="form-control" placeholder="Name" name="name" />
+                    </div>
+                    <!-- end form-group -->
+                    <div class="form-group">
+                        <label>Date of Birth</label>
+                        <input type="text" class="form-control" placeholder="mm-dd-yy" name="DOB" />
+                    </div>
+                    <!-- end form-group -->
+                    <div class="form-group">
+                        <label>Your Email</label>
+                        <input type="email" class="form-control" placeholder="Email" name="email" />
+                    </div>
+                    <!-- end form-group -->
+                    <div class="form-group">
+                        <label>Your Phone</label>
+                        <input type="text" class="form-control" placeholder="Phone Number" name="phone" />
+                    </div>
+                    <!-- end form-group -->
+                    <div class="form-group">
+                        <label>Your Country</label>
+                        <input type="text" class="form-control" placeholder="Country" name="nation" />
+                    </div>
+                    <!-- end form-group -->
+                    <div class="form-group">
+                        <label>Gender</label>
+                        <input type="text" class="form-control" placeholder="Gender" name="gender" />
+                    </div>
+                    <!-- end form-group -->
+                    <div class="form-group">
+                        <label>Identity Card</label>
+                        <input type="text" class="form-control" placeholder="Identity Card" name="identitycard" />
+                    </div>
+                    <!-- end form-group -->
+                    <button class="btn btn-orange" type="submit">Save Changes</button>
+                }
+            </div><!-- end modal-bpdy -->
+        </div><!-- end modal-content -->
+    </div><!-- end modal-dialog -->
+</div><!-- end edit-profile -->
+
+
+<div id="edit-password" class="modal custom-modal fade" role="dialog">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                <h3 class="modal-title">Change Password</h3>
+            </div><!-- end modal-header -->
+
+            <div class="modal-body">
+                @using (Html.BeginForm("EditUserProfile", "UserProfile", new { userID = 1 }, FormMethod.Post))
+                {
+                    <div class="form-group">
+                        <label>Old Password</label>
+                        <input type="password" class="form-control" placeholder="Old Password" name="OldPassword" />
+                    </div>
+
+                    <!-- end form-group -->
+
+                    <div class="form-group">
+                        <label>New Password</label>
+                        <input type="password" class="form-control" placeholder="New Password" name="NewPassword" />
+                    </div>
+
+                    <!-- end form-group -->
+
+                    <div class="form-group">
+                        <label>Confirm Password</label>
+                        <input type="password" class="form-control" placeholder="Confirm Password" name="ConfirmPassword" />
+                    </div>
+
+                    <!-- end form-group -->
+
+                    <button class="btn btn-orange" type="submit">Save Changes</button>
+                }
+            </div><!-- end modal-bpdy -->
+        </div><!-- end modal-content -->
+    </div><!-- end modal-dialog -->
+</div><!-- end change-password -->
+<!-- Page Scripts Starts -->
+<script src="~/js/jquery.min.js"></script>
+<script src="~/js/bootstrap.min.js"></script>
+<script src="~/js/custom-navigation.js"></script>
+<!-- Page Scripts Ends -->

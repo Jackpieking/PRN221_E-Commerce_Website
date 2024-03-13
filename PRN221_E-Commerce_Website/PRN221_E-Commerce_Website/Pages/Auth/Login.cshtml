@@ -1,0 +1,64 @@
+﻿@page
+@model MockProject.Pages.Auth.LoginModel
+@{
+    Layout = "Shared/_Layout";
+}
+<!--===== INNERPAGE-WRAPPER ====-->
+<section class="innerpage-wrapper">
+    <div id="login" class="innerpage-section-padding">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm-12">
+
+                    <div class="flex-content">
+                        <div class="custom-form custom-form-fields">
+                            <h3>Login</h3>
+                            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.</p>
+                            @using (Html.BeginForm("Login", "Login", FormMethod.Post))
+                            {
+                                @ViewBag.LoginFail
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Account, new { @class = "sr-only", @for = "inputAccount" })
+                                    @Html.TextBoxFor(m => m.Account, new { @class = "form-control account", id = "inputAccount", name = "account", placeholder = "User account", autofocus = "", required = "required" })
+                                    @*@Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })*@
+
+                                    <span><i class="fa fa-user"></i></span>
+                                </div>
+
+                                <div class="form-group">
+                                    @Html.LabelFor(m => m.Password, new { @class = "sr-only", @for = "inputPassword" })
+                                    @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg password", id = "inputPassword", name = "password", placeholder = "Password", required = "required" })
+                                    @*@Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })*@
+
+
+                                    <span><i class="fa fa-lock"></i></span>
+                                </div>
+                                <div class="form-group">
+                                    <div class="col-md-offset-2 col-md-10">
+                                        <div class="checkbox">
+                                            @Html.CheckBoxFor(m => m.RememberMe, new { @name = "rememberme" })
+                                            @Html.LabelFor(m => m.RememberMe)
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <button class="btn btn-orange btn-block" type="submit" value="Log in">Login</button>
+
+                            }
+
+
+                            <div class="other-links">
+                                <a asp-page="ForgotPassword">Forgot Password ?</a>
+                            </div><!-- end other-links -->
+                        </div><!-- end custom-form -->
+
+                        <div class="flex-content-img custom-form-img">
+                            <img src="~/img/image--ks2.png" class="img-responsive" alt="registration-img" />
+                        </div><!-- end custom-form-img -->
+                    </div><!-- end form-content -->
+
+                </div><!-- end columns -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end login -->
+</section><!-- end innerpage-wrapper -->

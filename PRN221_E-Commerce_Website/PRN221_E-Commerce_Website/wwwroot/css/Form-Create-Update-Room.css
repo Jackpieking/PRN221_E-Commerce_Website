@@ -1,0 +1,132 @@
+﻿/*.pop-up {
+    margin-top: 10px;
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.checkbox-list {
+    display: flex;
+    justify-content: space-between;
+}
+
+.checkbox-list-item {
+    display: flex;
+    align-items: center;
+    margin-right: 5px;*/ /* Khoảng cách giữa các cặp */
+/*}
+
+.label_checkbox {
+    margin-right: 5px;*/ /* Khoảng cách giữa label và checkbox */
+/*}
+
+.pop-up-content {
+    background-color: #fefefe;
+    margin: 1% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 400px;
+    height: 600px;
+    height: auto;
+}
+
+h1 {
+    text-align: center;
+}
+
+.checkbox {
+    margin-left: 0px;
+    width: 15px;
+}
+
+input,
+textarea {
+    width: 100%;
+    margin-bottom: 20px;
+}
+
+input {
+    height: 30px;
+}
+
+textarea {
+    height: 60px;
+}
+
+.close {
+    color: #aaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+    .close:hover,
+    .close:focus {
+        color: black;
+        text-decoration: none;
+        cursor: pointer;
+    }
+
+#SubmitAddHotel {
+    background-color: #003580;
+    color: #fff;
+    font-size: 1em;
+    font-weight: 500;
+}*/
+
+
+.Create {
+    text-align: center;
+}
+
+.hotel-list {
+    width: 90%;
+    display: flex;
+    justify-content: space-between;
+}
+
+.hotel-list-right li {
+    list-style: none;
+    border-radius: 10px;
+}
+
+.hotel-list-left img {
+    width: 200px;
+}
+
+.hotel-list-right input {
+    width: 100%;
+    padding: 5px;
+    background-color: #003580;
+    color: #fff;
+    font-weight: 500;
+    font-size: 1em;
+    border: none;
+    margin: 3px 0px;
+    box-sizing: border-box;
+    border: 1px solid black;
+}
+
+    .hotel-list-right input:hover {
+        transform: scale(1.1);
+        transition: transform 0.5s;
+    }
+
+.hotel-list-left {
+    display: flex;
+}
+
+    .hotel-list-left h3 {
+        width: 400px;
+        margin-top: 16px;
+    }
+
+    .hotel-list-left h3 {
+        margin-top: 0px;
+    }
