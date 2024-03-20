@@ -14,7 +14,7 @@ public interface IUnitOfWork
 
     IOrderRepository OrderRepository { get; }
 
-    IRoomRepository RoomRepository { get; }
+    IPizzaRepository PizzaRepository { get; }
 
     IPayMethodRepository PayMethodRepository { get; }
 

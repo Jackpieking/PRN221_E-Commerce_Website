@@ -6,21 +6,23 @@ public sealed class OrderDetail
 {
     public int OrderID { get; set; }
 
-    public int RoomId { get; set; }
+    public int PizzaId { get; set; }
 
     public int AccountId { get; set; }
 
-    public DateTime CheckIn { get; set; }
+    public string Name { get; set; }
 
-    public DateTime CheckOut { get; set; }
+    public string Phone { get; set; }
 
-    public int Adult { get; set; }
+    public string Address { get; set; }
 
-    public int Child { get; set; }
+    public int Quantity { get; set; }
+
+    public DateTime OrderDate { get; set; }
 
     public int PayMethodID { get; set; }
 
-    public double TotalPrice { get; set; }
+    public double Price { get; set; }
 
     public bool IsPaid { get; set; }
 

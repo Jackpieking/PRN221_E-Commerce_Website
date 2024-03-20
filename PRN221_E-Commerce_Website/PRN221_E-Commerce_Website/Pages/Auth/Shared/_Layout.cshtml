@@ -10,7 +10,8 @@
     <link href="https://fonts.googleapis.com/css?family=Lato:300,300i,400,400i,700,700i,900,900i%7CMerriweather:300,300i,400,400i,700,700i,900,900i" rel="stylesheet">
 
     <!-- Bootstrap Stylesheet -->
-    <link rel="stylesheet" href="~/css/bootstrap.min.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-EVSTQN3/azprG1Anm3QDgpJLIm9Nao0Yz1ztcQTwFspd3yD65VohhpuuCOmLASjC" crossorigin="anonymous">
+    @* <link rel="stylesheet" href="~/css/bootstrap.min.css"> *@
 
     <!-- Font Awesome Stylesheet -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
@@ -40,7 +41,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div id="info">
-                        <ul class="list-unstyled list-inline">
+                        <ul class="list-unstyled list-inline d-flex">
                             <li><a asp-action="AdminLogin" asp-controller="AdminLogin"><img src="~/img/Vn.png" /></a></li>
                             <li><span><i class="fa fa-map-marker"></i></span>29 Land St, Lorem City, CA</li>
                             <li><span><i class="fa fa-phone"></i></span>+00 123 4567</li>
@@ -49,9 +50,7 @@
                 </div><!-- end columns -->
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div id="links">
-                        @*@{int x = Context.Session.Get("account");}*@
-
-                        <ul class="list-unstyled list-inline">
+                        <ul class="list-unstyled list-inline d-flex">
                             <li><a asp-page="./Login"><span><i class="fa fa-lock"></i></span>Login</a></li>
                             <li><a asp-page="./Register"><span><i class="fa fa-plus"></i></span>Sign Up</a></li>
                         </ul>
@@ -73,7 +72,7 @@
             <div class="navbar-header">
                 <div class="header-search hidden-lg">
                 </div>
-                <a asp-page="../Index" class="navbar-brand">Bookeng Admin</a>
+                <a asp-page="../Index" class="navbar-brand">Pizza Life</a>
             </div><!-- end navbar-header -->
         </div><!-- end container -->
     </nav><!-- end navbar -->

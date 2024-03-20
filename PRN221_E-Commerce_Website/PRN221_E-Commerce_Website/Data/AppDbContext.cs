@@ -11,7 +11,7 @@ public sealed class AppDbContext : DbContext
     public DbSet<Role> Roles { get; set; }
     public DbSet<Account> Accounts { get; set; }
     public DbSet<Category> Categories { get; set; }
-    public DbSet<Room> Rooms { get; set; }
+    public DbSet<Pizza> Pizzas { get; set; }
     public DbSet<Order> Orders { get; set; }
     public DbSet<OrderDetail> OrderDetails { get; set; }
     public DbSet<PayMethod> PayMethods { get; set; }
@@ -29,7 +29,7 @@ public sealed class AppDbContext : DbContext
 
             entity.ToTable("Role");
 
-            entity.Property(e => e.Id).HasColumnName("ID").UseIdentityByDefaultColumn();
+            entity.Property(e => e.Id).HasColumnName("ID").ValueGeneratedOnAdd();
             entity
                 .Property(e => e.RoleName)
                 .IsRequired()
@@ -48,29 +48,15 @@ public sealed class AppDbContext : DbContext
 
             entity.HasIndex(e => e.AccountName, "accountName").IsUnique();
 
-            entity.Property(e => e.Id).HasColumnName("ID").UseIdentityByDefaultColumn();
-            entity.Property(e => e.Birthday).HasColumnName("Birthday");
-            entity
-                .Property(e => e.Email)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("Email");
+            entity.Property(e => e.Id).HasColumnName("ID").ValueGeneratedOnAdd();
+            
             entity
                 .Property(e => e.Gender)
                 .HasMaxLength(10)
                 .IsUnicode(false)
                 .HasColumnName("Gender");
-            entity
-                .Property(e => e.Identitycard)
-                .HasMaxLength(20)
-                .IsUnicode(false)
-                .HasColumnName("IdentityCard");
+            
             entity.Property(e => e.Name).HasMaxLength(50).HasColumnName("Name");
-            entity
-                .Property(e => e.Nation)
-                .HasMaxLength(50)
-                .IsUnicode(false)
-                .HasColumnName("Nation");
             entity
                 .Property(e => e.Password)
                 .IsRequired()
@@ -109,26 +95,24 @@ public sealed class AppDbContext : DbContext
             entity.HasKey(e => e.ID);
 
             entity.ToTable("Category");
-            entity.Property(e => e.ID).HasColumnName("CategoryID").UseIdentityByDefaultColumn();
+            entity.Property(e => e.ID).HasColumnName("CategoryID").ValueGeneratedOnAdd();
         });
         #endregion
 
-        #region ConfigTableRoom
-        modelBuilder.Entity<Room>(entity =>
+        #region ConfigTablePizza
+        modelBuilder.Entity<Pizza>(entity =>
         {
-            entity.ToTable("Room");
+            entity.ToTable("Pizza");
 
-            entity.Property(e => e.Id).HasColumnName("RoomID");
+            entity.Property(e => e.Id).HasColumnName("PizzaID").ValueGeneratedOnAdd();
 
-            entity.Property(e => e.BedQuantity).HasColumnName("Bed Quantity");
-
-            entity.Property(e => e.RoomImage).HasMaxLength(255).IsUnicode(false);
+            entity.Property(e => e.PizzaImage).HasMaxLength(255).IsUnicode(false);
 
             entity.Property(e => e.Name).IsRequired().HasMaxLength(100).IsUnicode(false);
 
             entity
                 .HasOne(r => r.Category)
-                .WithMany(c => c.Rooms)
+                .WithMany(c => c.Pizzas)
                 .HasForeignKey(r => r.CategoryId);
         });
         #endregion
@@ -140,16 +124,16 @@ public sealed class AppDbContext : DbContext
 
             entity.HasKey(e => e.Id);
 
-            entity.Property(e => e.Id).HasColumnName("OrderID").UseIdentityByDefaultColumn();
+            entity.Property(e => e.Id).HasColumnName("OrderID").ValueGeneratedOnAdd();
 
             entity.Property(e => e.AccountId).IsRequired().HasColumnName("AccountID");
 
             entity
-                .Property(e => e.RoomId)
+                .Property(e => e.PizzaId)
                 .IsRequired()
                 .HasMaxLength(20)
                 .IsUnicode(false)
-                .HasColumnName("RoomID");
+                .HasColumnName("PizzaID");
 
             entity
                 .HasOne(e => e.Account)
@@ -162,7 +146,7 @@ public sealed class AppDbContext : DbContext
         modelBuilder.Entity<OrderDetail>(entity =>
         {
             entity.ToTable("Order Detail");
-            entity.HasKey(e => e.OrderID);
+            entity.HasKey(e => new { e.OrderID, e.PizzaId });
 
             entity
                 .HasOne(d => d.Order)
@@ -180,7 +164,7 @@ public sealed class AppDbContext : DbContext
         {
             entity.ToTable("PayMethod");
             entity.HasKey(p => p.Id);
-            entity.Property(p => p.Id).UseIdentityByDefaultColumn();
+            entity.Property(p => p.Id).ValueGeneratedOnAdd();
             entity.Property(p => p.Name).HasMaxLength(255).IsUnicode(false);
         });
         #endregion
@@ -190,7 +174,7 @@ public sealed class AppDbContext : DbContext
         {
             entity.ToTable("UserPaymentTransaction");
             entity.HasKey(e => e.Id);
-            entity.Property(entity => entity.Id).UseIdentityByDefaultColumn();
+            entity.Property(entity => entity.Id).ValueGeneratedOnAdd();
             entity
                 .HasOne(c => c.PayMethod)
                 .WithMany(e => e.UserPaymentTransactions)
@@ -201,5 +185,6 @@ public sealed class AppDbContext : DbContext
                 .HasForeignKey(c => c.AccountId);
         });
         #endregion
+
     }
 }

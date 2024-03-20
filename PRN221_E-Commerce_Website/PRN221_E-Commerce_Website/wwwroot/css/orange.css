@@ -1124,16 +1124,16 @@ p{
 
 /*************** ROOMS-OFFER ***************/
 
-/*#luxury-rooms .row{
+/*#luxury-pizzas .row{
 	background:#003580 ;
 }
 
-.luxury-room-text{
+.luxury-pizza-text{
 	background:#efeff0;
 	color:#000;
 }
 
-.luxury-room-text .btn-black:hover{
+.luxury-pizza-text .btn-black:hover{
 	background:white;
 	color:#000;
 }*/
@@ -4089,16 +4089,16 @@ p {
 
 /*************** ROOMS-OFFER ***************/
 
-#luxury-rooms .row {
+#luxury-pizzas .row {
 	background: #003580;
 }
 
-.luxury-room-text {
+.luxury-pizza-text {
 	background: #efeff0;
 	color: #000;
 }
 
-	.luxury-room-text .btn-black:hover {
+	.luxury-pizza-text .btn-black:hover {
 		background: white;
 		color: #000;
 	}

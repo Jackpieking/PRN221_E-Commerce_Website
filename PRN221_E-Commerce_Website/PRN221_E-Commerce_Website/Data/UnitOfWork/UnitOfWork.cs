@@ -14,7 +14,7 @@ public sealed class UnitOfWork : IUnitOfWork
     private ICategoryRepository _categoryRepository;
     private IOrderDetailRepository _orderDetailRepository;
     private IOrderRepository _orderRepository;
-    private IRoomRepository _roomRepository;
+    private IPizzaRepository _pizzaRepository;
     private IPayMethodRepository _payMethodRepository;
 
     public IAccountRepository AccountRepository
@@ -57,13 +57,13 @@ public sealed class UnitOfWork : IUnitOfWork
         }
     }
 
-    public IRoomRepository RoomRepository
+    public IPizzaRepository PizzaRepository
     {
         get
         {
-            _roomRepository ??= new RoomRepository(context: _context);
+            _pizzaRepository ??= new PizzaRepository(context: _context);
 
-            return _roomRepository;
+            return _pizzaRepository;
         }
     }
 

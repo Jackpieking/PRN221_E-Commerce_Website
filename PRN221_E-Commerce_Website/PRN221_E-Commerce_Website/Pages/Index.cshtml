@@ -1,4 +1,5 @@
 ﻿@page
+@using PRN221_E_Commerce_Website.Pages
 @model IndexModel
 @{
     ViewData["Title"] = "Home page";
@@ -6,46 +7,36 @@
 <div class="container">
     <!--====== LOADER =====-->
     <div>
-        <h1 style="color: green; display: none; text-align: center" id="h-success">Booking Room Successfully!</h1>
-        <h1 style="color: red; display: none; text-align: center" id="h-fail">Booking Room Fail!</h1>
+        <h1 style="color: green; display: none; text-align: center" id="h-success">Booking Pizza Successfully!</h1>
+        <h1 style="color: red; display: none; text-align: center" id="h-fail">Booking Pizza Fail!</h1>
     </div>
 
-    <!--======================= PRODUCT CARDS =========================-->
-    <div class="container">
-        <div class="row">
-            <div class="card col-4" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
-            </div>
-
-            <div class="card" style="width: 18rem;">
-                <img src="..." class="card-img-top" alt="...">
-                <div class="card-body">
-                    <h5 class="card-title">Card title</h5>
-                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                    <a href="#" class="btn btn-primary">Go somewhere</a>
-                </div>
+    <!--======================= ROOM CARDS =========================-->
+    <div class="container m-3">
+        <div class="header">
+            <h1 class="text-center">Our Pizzas</h1>
+            <div class="row">
+                @foreach (var item in Model.Pizzas)
+                {
+                    <div class="card col-3 mb-2">
+                        <img src="~/img/@item.PizzaImage" class="card-img-top" alt="..." style="max-height: 200px">
+                        <div class="card-body">
+                            <h5 class="card-title">@item.Name</h5>
+                            <p class="card-text">@item.Price VND</p>
+                            <a asp-page="./Pizza" asp-route-id="@item.Id">Details</a>
+                        </div>
+                    </div>
+                    <div class="col-1 mb-2"></div>
+                }
             </div>
         </div>
+
     </div>
     <!--======================= BEST FEATURES =====================-->
     <section id="best-features" class="banner-padding black-features">
         <div class="container">
             <div class="row">
-                <div class="col-sm-6 col-md-3">
+                <div class="col-sm-6 col-md-4">
                     <div class="b-feature-block">
                         <span><i class="fa fa-dollar"></i></span>
                         <h3>Best Price Guarantee</h3>
@@ -53,26 +44,18 @@
                     </div><!-- end b-feature-block -->
                 </div><!-- end columns -->
 
-                <div class="col-sm-6 col-md-3">
+                <div class="col-sm-6 col-md-4">
                     <div class="b-feature-block">
                         <span><i class="fa fa-lock"></i></span>
-                        <h3>Safe and Secure</h3>
+                        <h3>Safe and Delicious</h3>
                         <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</p>
                     </div><!-- end b-feature-block -->
                 </div><!-- end columns -->
 
-                <div class="col-sm-6 col-md-3">
+                <div class="col-sm-6 col-md-4">
                     <div class="b-feature-block">
                         <span><i class="fa fa-thumbs-up"></i></span>
-                        <h3>Best Travel Agents</h3>
-                        <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</p>
-                    </div><!-- end b-feature-block -->
-                </div><!-- end columns -->
-
-                <div class="col-sm-6 col-md-3">
-                    <div class="b-feature-block">
-                        <span><i class="fa fa-bars"></i></span>
-                        <h3>Travel Guidelines</h3>
+                        <h3>Best Delivery Agents</h3>
                         <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis.</p>
                     </div><!-- end b-feature-block -->
                 </div><!-- end columns -->
@@ -127,18 +110,6 @@
                         </ul>
                     </div><!-- end columns -->
 
-                    <div class="col-xs-12 col-sm-6 col-md-2 col-lg-2 footer-widget ftr-links">
-                        <h3 class="footer-heading">COMPANY</h3>
-                        <ul class="list-unstyled">
-                            <li><a href="#">Home</a></li>
-                            <li><a href="#">Flight</a></li>
-                            <li><a href="#">Hotel</a></li>
-                            <li><a href="#">Tours</a></li>
-                            <li><a href="#">Cruise</a></li>
-                            <li><a href="#">Cars</a></li>
-                        </ul>
-                    </div><!-- end columns -->
-
                     <div class="col-xs-12 col-sm-6 col-md-3 col-lg-3 footer-widget ftr-links ftr-pad-left">
                         <h3 class="footer-heading">RESOURCES</h3>
                         <ul class="list-unstyled">
@@ -153,15 +124,6 @@
                     <div class="col-xs-12 col-sm-6 col-md-4 col-lg-4 footer-widget ftr-about">
                         <h3 class="footer-heading">ABOUT US</h3>
                         <p>Lorem ipsum dolor sit amet, consectetuer adipiscing elit, sed diam nonummy nibh euismod tincidunt ut laoreet dolore magna aliquam erat volutpat. Ut wisi enim ad minim veniam, quis nostrud exerci tation ullamcorper suscipit.</p>
-                        <ul class="social-links list-inline list-unstyled">
-                            <li><a href="#"><span><i class="fa fa-facebook"></i></span></a></li>
-                            <li><a href="#"><span><i class="fa fa-twitter"></i></span></a></li>
-                            <li><a href="#"><span><i class="fa fa-google-plus"></i></span></a></li>
-                            <li><a href="#"><span><i class="fa fa-pinterest-p"></i></span></a></li>
-                            <li><a href="#"><span><i class="fa fa-instagram"></i></span></a></li>
-                            <li><a href="#"><span><i class="fa fa-linkedin"></i></span></a></li>
-                            <li><a href="#"><span><i class="fa fa-youtube-play"></i></span></a></li>
-                        </ul>
                     </div><!-- end columns -->
 
                 </div><!-- end row -->

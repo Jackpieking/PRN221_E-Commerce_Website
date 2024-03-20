@@ -1,0 +1,88 @@
+﻿@page
+@model PRN221_E_Commerce_Website.Pages.PizzaModel
+@{
+}
+<!--===== INNERPAGE-WRAPPER ====-->
+<section class="innerpage-wrapper">
+    <div id="hotel-details" class="innerpage-section-padding">
+        <div class="container">
+            <div class="row">
+
+                <div class="col-xs-12 col-sm-12 col-md-3 side-bar left-side-bar">
+                    <div class="side-bar-block booking-form-block">
+                        <h2 class="selected-price">@Model.pizza.Price<span>VND</span></h2>
+                        <div class="booking-form">
+                            <h3>Book Pizza</h3>
+                            <form>
+                                <h5>Name</h5>
+                                <div class="form-group">
+                                    <input type="text" class="form-control dpd1" name="Name" placeholder="Name" required />
+                                </div>
+                                <h5>Phone</h5>
+                                <div class="form-group">
+                                    <input type="text" class="form-control dpd2" name="Phone" placeholder="Phone" required />
+                                </div>
+                                <h5>Address</h5>
+                                <div class="form-group">
+                                    <input type="text" class="form-control dpd2" name="Address" placeholder="Address" required />
+                                </div>
+                                <h5>Quantity</h5>
+                                <div class="form-group">
+                                    <input min="1" id="quantity" type="number" class="form-control dpd2" name="Quantity" placeholder="Quantity" required onchange="priceCount()" />
+                                </div>
+                                <h5>Payment Method</h5>
+                                <div class="form-group right-icon">
+                                    <select class="form-control" name="PayMethod">
+                                        <option value="1">Cash</option>
+                                        <option value="2">VNPay</option>
+                                    </select>
+                                    <i class="fa fa-angle-down"></i>
+                                </div>
+                                <h5>Price (VND)</h5>
+                                <div class="form-group">
+                                    <h5 id="price" name="Price">@Model.pizza.Price</h5>
+                                </div>
+                                <div class="form-group" style="display: none">
+                                    <h5 id="PizzaID" name="PizzaId">@Model.pizza.Id</h5>
+                                </div>
+                                <button class="btn btn-block btn-orange" type="submit">Confirm Booking</button>
+                            </form>
+
+                        </div><!-- end booking-form -->
+                    </div><!-- end side-bar-block -->
+
+                    <div class="row">
+                        <div class="col-xs-12 col-sm-6 col-md-12">
+                            <div class="side-bar-block support-block">
+                                <h3>Need Help</h3>
+                                <p>Lorem ipsum dolor sit amet, ad duo fugit aeque fabulas, in lucilius prodesset pri. Veniam delectus ei vis. Est atqui timeam mnesarchum.</p>
+                                <div class="support-contact">
+                                    <span><i class="fa fa-phone"></i></span>
+                                    <p>+1 123 1234567</p>
+                                </div><!-- end support-contact -->
+                            </div><!-- end side-bar-block -->
+                        </div><!-- end columns -->
+
+                    </div><!-- end row -->
+                </div><!-- end columns -->
+                <div class="col-xs-12 col-sm-12 col-md-9 col-lg-9 content-side">
+                    <h1>@Model.pizza.Name</h1>
+
+                    <div class="detail-slider">
+                        <div class="feature-slider">
+                            <div><img src="~/img/@Model.pizza.PizzaImage" class="img-responsive w-100" alt="feature-img" /></div>
+                        </div><!-- end feature-slider -->
+                    </div>  <!-- end detail-slider -->
+                </div><!-- end content-side -->
+            </div><!-- end row -->
+        </div><!-- end container -->
+    </div><!-- end hotel-details -->
+</section><!-- end innerpage-wrapper -->
+<script>
+    var pricePerUnit = document.getElementById("price").textContent;
+    function priceCount() {
+        var quantity = document.getElementById("quantity").value;
+        var price = pricePerUnit * quantity;
+        document.getElementById("price").innerHTML = price
+    }
+</script>

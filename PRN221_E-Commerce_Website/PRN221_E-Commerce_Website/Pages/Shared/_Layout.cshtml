@@ -1,4 +1,10 @@
-﻿<!DOCTYPE html>
+﻿@using Microsoft.AspNetCore.Http;
+@{
+    string path = Context.Request.Path;
+    // Check if the request path contains "/Admin/"
+    var isAdmin = path.StartsWith("/Admin");
+}
+<!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="utf-8" />
@@ -41,7 +47,7 @@
             <div class="row">
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div id="info">
-                        <ul class="list-unstyled list-inline">
+                        <ul class="list-unstyled list-inline d-flex">
                             <li><a asp-action="AdminLogin" asp-controller="AdminLogin"><img src="~/img/Vn.png" /></a></li>
                             <li><span><i class="fa fa-map-marker"></i></span>29 Land St, Lorem City, CA</li>
                             <li><span><i class="fa fa-phone"></i></span>+00 123 4567</li>
@@ -50,21 +56,30 @@
                 </div><!-- end columns -->
                 <div class="col-xs-12 col-sm-6 col-md-6 col-lg-6">
                     <div id="links">
-                        @*@{int x = Context.Session.Get("account");}*@
-
-                        <ul class="list-unstyled list-inline">
-                            <li><a asp-page="./Auth/Login"><span><i class="fa fa-lock"></i></span>Login</a></li>
-                            <li><a asp-page="./Auth/Register"><span><i class="fa fa-plus"></i></span>Sign Up</a></li>
+                        <ul class="list-unstyled list-inline d-flex">
+                            @if (User.Identity.IsAuthenticated)
+                            {
+                                <li><a asp-page="./Auth/Logout"><span><i class="fa fa-plus"></i></span>Sign Out</a></li>
+                                if (User.IsInRole("1"))
+                                {
+                                    @if (!isAdmin)
+                                    {
+                                        <li><a asp-page="./Admin/Admin"><span><i class="fa fa-avatar"></i></span>Admin</a></li>
+                                    }
+                                    else
+                                    {
+                                        <li><a asp-page="./Admin"><span><i class="fa fa-avatar"></i></span>Admin</a></li>
+                                    }
+                                }
+                            }
+                            else
+                            {
+                                <li><a asp-page="./Auth/Login"><span><i class="fa fa-lock"></i></span>Login</a></li>
+                                <li><a asp-page="./Auth/Register"><span><i class="fa fa-plus"></i></span>Sign Up</a></li>
+                            }
                         </ul>
-
-
-
-                        @*  <ul class="list-unstyled list-inline">
-                        <li style="color: white; font-weight: bold; text-decoration: none"><a asp-area="" asp-controller="OwnerSignup" asp-action="OwnerSignup"><span><i class="fa fa-plus"></i></span>List your properties</a></li>
-                        <li style="color: white; font-weight: bold;"><a href="@Url.ActionLink("UserProfile","UserProfile", new { id = Accessors.HttpContext.Session.GetString("ID")})">Hi, @Accessors.HttpContext.Session.GetString("Username")</a></li>
-                        <li><a href="@Url.ActionLink("Logout","Home")"><span><i class="fa fa-minus"></i></span>Log out</a></li>
-                        </ul> *@
                     </div><!-- end links -->
+
                 </div><!-- end columns -->
             </div><!-- end row -->
         </div><!-- end container -->
@@ -74,7 +89,14 @@
             <div class="navbar-header">
                 <div class="header-search hidden-lg">
                 </div>
-                <a asp-page="./Index" class="navbar-brand">Bookeng</a>
+                @if (isAdmin)
+                {
+                    <a asp-page="../Admin" class="navbar-brand">Pizza Admin</a>
+                }
+                else
+                {
+                    <a asp-page="./Index" class="navbar-brand">Pizza Life</a>
+                }
             </div><!-- end navbar-header -->
         </div><!-- end container -->
     </nav><!-- end navbar -->
@@ -89,5 +111,5 @@
     @await RenderSectionAsync("Scripts", required: false)
 
 </body>
-}
+    }
 </html>

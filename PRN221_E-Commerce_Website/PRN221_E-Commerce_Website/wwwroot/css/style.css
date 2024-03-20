@@ -1673,29 +1673,29 @@ h1,h2,h3,h4,h5,h6,.main-title a, .flight-info h3 .flight-destination,.blog-post-
 
 /*************** ROOMS-OFFER ***************/
 
-/*.luxury-room-imgs{
+/*.luxury-pizza-imgs{
 	padding:31px;
 	overflow:hidden;
 }
 
-.luxury-room-block img{
+.luxury-pizza-block img{
 	padding:1px;
 }
 
-.luxury-room-block:nth-child(odd){
+.luxury-pizza-block:nth-child(odd){
 	padding-right:0px;
 }
 
-.luxury-room-block:nth-child(even){
+.luxury-pizza-block:nth-child(even){
 	padding-left:0px;
 }
 
-.luxury-room-imgs ul li{
+.luxury-pizza-imgs ul li{
 	float:left;
 	margin:1px;
 }
 
-.luxury-room-text{
+.luxury-pizza-text{
 	padding:90px 60px 110px;
 	overflow:hidden;
 }*/
@@ -6408,29 +6408,29 @@ h1, h2, h3, h4, h5, h6, .main-title a, .flight-info h3 .flight-destination, .blo
 
 /*************** ROOMS-OFFER ***************/
 
-.luxury-room-imgs {
+.luxury-pizza-imgs {
 	padding: 31px;
 	overflow: hidden;
 }
 
-.luxury-room-block img {
+.luxury-pizza-block img {
 	padding: 1px;
 }
 
-.luxury-room-block:nth-child(odd) {
+.luxury-pizza-block:nth-child(odd) {
 	padding-right: 0px;
 }
 
-.luxury-room-block:nth-child(even) {
+.luxury-pizza-block:nth-child(even) {
 	padding-left: 0px;
 }
 
-.luxury-room-imgs ul li {
+.luxury-pizza-imgs ul li {
 	float: left;
 	margin: 1px;
 }
 
-.luxury-room-text {
+.luxury-pizza-text {
 	padding: 90px 60px 110px;
 	overflow: hidden;
 }

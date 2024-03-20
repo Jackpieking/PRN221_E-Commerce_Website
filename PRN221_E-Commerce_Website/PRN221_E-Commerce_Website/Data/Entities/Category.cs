@@ -10,5 +10,5 @@ public sealed class Category
 
     public string Description { get; set; }
 
-    public IEnumerable<Room> Rooms { get; set; }
+    public IEnumerable<Pizza> Pizzas { get; set; }
 }

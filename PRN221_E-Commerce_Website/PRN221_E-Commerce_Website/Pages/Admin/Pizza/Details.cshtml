@@ -1,0 +1,50 @@
+﻿@page
+@model PRN221_E_Commerce_Website.Pages.Admin.Pizzas.DetailsModel
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "../Shared/_Layout";
+}
+
+<h2>Details</h2>
+
+<div>
+    <h4>Pizza</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Pizza.Name)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pizza.Name)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pizza.Price)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pizza.Price)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pizza.PizzaImage)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pizza.PizzaImage)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pizza.IsAvailable)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pizza.IsAvailable)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Pizza.Category)
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Pizza.Category.ID)
+        </dd>
+    </dl>
+</div>
+<div>
+    <a asp-page="./Edit" asp-route-id="@Model.Pizza.Id">Edit</a> |
+    <a asp-page="./Pizza">Back to List</a>
+</div>

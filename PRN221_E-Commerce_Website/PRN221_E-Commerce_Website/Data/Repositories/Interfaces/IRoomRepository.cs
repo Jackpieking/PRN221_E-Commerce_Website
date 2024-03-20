@@ -6,15 +6,15 @@ using System.Threading.Tasks;
 
 namespace PRN221_E_Commerce_Website.Data.Repositories.Interfaces;
 
-public interface IRoomRepository : IBaseRepository<Room>
+public interface IPizzaRepository : IBaseRepository<Pizza>
 {
-    Task<IEnumerable<Room>> GetAllRoomsVer1Async(CancellationToken cancellationToken);
+    Task<IEnumerable<Pizza>> GetAllPizzasVer1Async(CancellationToken cancellationToken);
 
-    Task<Room> GetRoomByIdAsync(
+    Task<Pizza> GetPizzaByIdAsync(
         int Id,
         CancellationToken cancellationToken);
 
-    Task<Room> GetRoomsByNameAsync(
-        string roomName,
+    Task<Pizza> GetPizzasByNameAsync(
+        string pizzaName,
         CancellationToken cancellationToken);
 }

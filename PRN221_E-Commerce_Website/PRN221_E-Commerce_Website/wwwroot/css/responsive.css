@@ -1567,25 +1567,25 @@ Author:			Star Travel
 
 @media(max-width:1199px){
 	
-	.luxury-room-text{
+	.luxury-pizza-text{
 		text-align:center;
 	}
 	
-	.luxury-room-text p{
+	.luxury-pizza-text p{
 		width:100%;
 	}
 }
 
 @media(max-width:576px){
 	
-	.luxury-room-text{
+	.luxury-pizza-text{
 		padding:60px 30px;
 	}
 }
 
 @media(max-width:420px){
 	
-	.luxury-room-imgs{
+	.luxury-pizza-imgs{
 		padding:23px;
 	}
 }

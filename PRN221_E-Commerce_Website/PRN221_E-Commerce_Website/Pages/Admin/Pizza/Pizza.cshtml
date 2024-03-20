@@ -1,0 +1,63 @@
+﻿@page
+@model PRN221_E_Commerce_Website.Pages.Admin.Pizzas.PizzaModel
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "../Shared/_Layout";
+}
+
+<h2>Index</h2>
+
+<p>
+    <a asp-page="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].Name)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].Price)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].PizzaImage)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].IsAvailable)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Pizza[0].Category)
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Pizza)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Price)
+                </td>
+                <td>
+                    <img style="max-height: 300px" class="img-responsive w-25" src="~/img/@item.PizzaImage" />
+                    @* @Html.DisplayFor(modelItem => item.PizzaImage) *@
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IsAvailable)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Category.CategoryName)
+                </td>
+                <td>
+                    <a asp-page="./Edit" asp-route-id="@item.Id">Edit</a> |
+                    <a asp-page="./Details" asp-route-id="@item.Id">Details</a> |
+                    <a asp-page="./Delete" asp-route-id="@item.Id">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -17,34 +17,34 @@
                             @using (Html.BeginForm("CheckInputUserSignup", "Signup", FormMethod.Post))
                             {
                                 @ViewBag.fail
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.Name, new { @class = "sr-only", @for = "lastName" }) *
+                                <div class="form-group m-2">
+                                    @Html.LabelFor(m => m.Name, new { @class = "sr-only", @for = "lastName" })
                                     @Html.TextBoxFor(m => m.Name, new { @class = "form-control account", id = "name", name = "name", placeholder = "Name", autofocus = "", required = "required" })
                                     @Html.ValidationMessageFor(m => m.Name, "", new { @class = "text-danger" })
 
                                 </div>
-                                <div class="form-group">
-                                    @Html.LabelFor(m => m.Account, new { @class = "sr-only", @for = "inputAccount" })
-                                    @Html.TextBoxFor(m => m.Account, new { @class = "form-control account", id = "inputAccount", name = "account", placeholder = "User account", autofocus = "", required = "required" })
-                                    @Html.ValidationMessageFor(m => m.Account, "", new { @class = "text-danger" })
+                                <div class="form-group m-2">
+                                    @Html.LabelFor(m => m.Username, new { @class = "sr-only", @for = "inputAccount" })
+                                    @Html.TextBoxFor(m => m.Username, new { @class = "form-control account", id = "inputAccount", name = "account", placeholder = "User account", autofocus = "", required = "required" })
+                                    @Html.ValidationMessageFor(m => m.Username, "", new { @class = "text-danger" })
                                     <span><i class="fa fa-user"></i></span>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group m-2">
                                     @Html.LabelFor(m => m.Email, new { @class = "sr-only", @for = "inputEmail" })
                                     @Html.TextBoxFor(m => m.Email, new { @class = "form-control email", id = "inputEmail", name = "email", placeholder = "Email address", autofocus = "", type = "email", required = "required" })
                                     @Html.ValidationMessageFor(m => m.Email, "", new { @class = "text-danger" })
                                     <span><i class="fa fa-envelope"></i></span>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group m-2">
                                     @Html.LabelFor(m => m.Password, new { @class = "sr-only", @for = "inputPassword" })
                                     @Html.PasswordFor(m => m.Password, new { @class = "form-control form-control-lg password", id = "inputPassword", name = "Password", placeholder = "Password", type = "password", required = "required" })
                                     @Html.ValidationMessageFor(m => m.Password)
                                     <span><i class="fa fa-lock"></i></span>
                                 </div>
 
-                                <div class="form-group">
+                                <div class="form-group m-2">
                                     @Html.LabelFor(m => m.ConfirmPassword, new { @class = "sr-only", @for = "inputPassword" })
                                     @Html.PasswordFor(m => m.ConfirmPassword, new { @class = "form-control form-control-lg password_confirmation", id = "inputPassword", name = "ConfirmPassword", placeholder = "Confirm Password", type = "password", required = "required" })
                                     @Html.ValidationMessageFor(m => m.ConfirmPassword)

@@ -10,55 +10,54 @@ using System.Threading.Tasks;
 
 namespace PRN221_E_Commerce_Website.Data.Repositories.Implementations;
 
-public sealed class RoomRepository :
-    BaseRepository<Room>,
-    IRoomRepository
+public sealed class PizzaRepository :
+    BaseRepository<Pizza>,
+    IPizzaRepository
 {
-    public RoomRepository(AppDbContext context) : base(context: context) { }
+    public PizzaRepository(AppDbContext context) : base(context: context) { }
 
-    public async Task<IEnumerable<Room>> GetAllRoomsVer1Async(CancellationToken cancellationToken)
+    public async Task<IEnumerable<Pizza>> GetAllPizzasVer1Async(CancellationToken cancellationToken)
     {
         return await _entities
             .AsNoTracking()
-            .Select(room => new Room
+            .Select(pizza => new Pizza
             {
-                Id = room.Id,
-                Name = room.Name,
-                Price = room.Price,
-                RoomImage = room.RoomImage,
+                Id = pizza.Id,
+                Name = pizza.Name,
+                Price = pizza.Price,
+                PizzaImage = pizza.PizzaImage,
                 Category = new()
                 {
-                    CategoryName = room.Category.CategoryName,
-                    Description = room.Category.Description
+                    CategoryName = pizza.Category.CategoryName,
+                    Description = pizza.Category.Description
                 }
             })
             .ToListAsync(cancellationToken: cancellationToken);
     }
 
-    public async Task<Room> GetRoomByIdAsync(
+    public async Task<Pizza> GetPizzaByIdAsync(
         int Id,
         CancellationToken cancellationToken)
     {
         return await _entities
             .AsNoTracking()
-            .Where(room => room.Id == Id)
-            .Select(room => new Room
+            .Where(pizza => pizza.Id == Id)
+            .Select(pizza => new Pizza
             {
-                Name = room.Name,
-                Price = room.Price,
-                BedQuantity = room.BedQuantity,
-                RoomImage = room.RoomImage,
-                IsAvailable = room.IsAvailable,
+                Name = pizza.Name,
+                Price = pizza.Price,
+                PizzaImage = pizza.PizzaImage,
+                //IsAvailable = pizza.IsAvailable,
                 Category = new()
                 {
-                    CategoryName = room.Category.CategoryName
+                    CategoryName = pizza.Category.CategoryName
                 },
             })
             .FirstOrDefaultAsync(cancellationToken: cancellationToken);
     }
 
-    public Task<Room> GetRoomsByNameAsync(
-        string roomName,
+    public Task<Pizza> GetPizzasByNameAsync(
+        string pizzaName,
         CancellationToken cancellationToken)
     {
         throw new NotImplementedException();
